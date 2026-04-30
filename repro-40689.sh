@@ -81,9 +81,9 @@ admin_token() {
     | jq -r .access_token
 }
 
-# --- Step 5: Enable brute force protection with permanent lockout ---
+# --- Step 5: Enable brute force protection with temporary lockout ---
 configure_brute_force() {
-  echo "==> Configuring brute force protection with permanent lockout on test-realm..."
+  echo "==> Configuring brute force protection with temporary lockout on test-realm..."
   local TOKEN
   TOKEN=$(admin_token)
   curl -sf -X PUT "$KC_URL/admin/realms/test-realm" \
@@ -91,7 +91,7 @@ configure_brute_force() {
     -H "Content-Type: application/json" \
     -d '{
       "bruteForceProtected": true,
-      "permanentLockout": true,
+      "permanentLockout": false,
       "maxFailureWaitSeconds": 900,
       "minimumQuickLoginWaitSeconds": 60,
       "waitIncrementSeconds": 60,
@@ -130,7 +130,7 @@ ensure_jar
 
 echo ""
 echo "============================================================"
-echo "  Repro: KC Issue #40689 — enabled=false under brute force"
+echo "  Repro: KC Issue #40689 — enabled=false under brute force (temporary lockout)"
 echo "  Image: $KC_IMAGE"
 echo "============================================================"
 
