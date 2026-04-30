@@ -18,7 +18,7 @@ GATLING_RESULTS_DIR="$SCRIPT_DIR/results"
 KC_URL="${KC_URL:-http://localhost:8080}"
 SCENARIOS_DIR="$SCRIPT_DIR/scenarios"
 
-KC_IMAGE="${KC_IMAGE:-quay.io/keycloak/keycloak:26.5.7}"
+KC_IMAGE="${KC_IMAGE:-quay.io/keycloak/keycloak:26.6.1}"
 KC_CPUS="${KC_CPUS:-4.0}"
 
 # --- Step 1: Ensure vendor repo and inject scenarios ---
