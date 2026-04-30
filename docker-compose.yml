@@ -1,0 +1,43 @@
+version: '2.2'
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: keycloak-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  keycloak:
+    image: ${KC_IMAGE:-quay.io/keycloak/keycloak:26.5.7}
+    container_name: keycloak
+    cpus: ${KC_CPUS:-4.0}
+    command:
+      - start-dev
+    volumes:
+      - ./providers:/opt/keycloak/providers:z
+    environment:
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+      KC_DB: postgres
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health/ready || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
