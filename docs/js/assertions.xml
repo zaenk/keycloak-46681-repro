@@ -1,6 +1,6 @@
 <testsuite name="keycloak.scenario.admin.UserCrawlEnabledCheck" tests="2" errors="0" failures="1" time="0">
   <testcase name="Global: percentage of failed events is 0.0" status="false" time="0">
-  <failure type="Global: percentage of failed events is 0.0">Actual value: 14.193185018304701</failure>
+  <failure type="Global: percentage of failed events is 0.0">Actual value: 14.608269858541895</failure>
 </testcase>
 <testcase name="Global: mean of response time is less than or equal to 300.0" status="true" time="0">
   <system-out>Global: mean of response time is less than or equal to 300.0</system-out>
