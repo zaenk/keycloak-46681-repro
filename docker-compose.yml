@@ -19,6 +19,7 @@ services:
 
   keycloak:
     image: ${KC_IMAGE:-quay.io/keycloak/keycloak:26.6.1}
+    pull_policy: if_not_present
     container_name: keycloak
     cpus: ${KC_CPUS:-4.0}
     command:

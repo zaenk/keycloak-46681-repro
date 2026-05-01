@@ -1,0 +1,13 @@
+commit_or_tag,type,failure_rate_pct,result,notes
+26.2.15,tag,0.0,good,
+34ad280,commit,0.0,good,first commit in 26.3.0 changelog (user profile build change)
+26.3.0,tag,12.94,bad,
+9e6e9214a4,commit,0.0,good,
+0387533247,commit,13.156666977698983,bad,
+b515f6ff87,commit,0.0,good,
+78f575b53b,commit,0.0,good,
+61586ff328,commit,0.0,good,
+6fa7a722be,commit,0.0,good,
+881c2114ea,commit,0.0,good,
+c2987ea8b4,commit,14.20382784416594,bad,
+828f9f7916,commit,12.300513299113392,bad,FIRST BAD COMMIT — Mark user as disabled if reaching max login failures and permanent lockout is enabled (closes #40159)
